@@ -1,0 +1,28 @@
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script src="jquery.charcounter.js"></script>
+	<script>
+		$(document).ready(function (){		
+			$('input.charcounter-control').charcounter({
+				placement: 'bottom-right'
+			});
+			$('textarea.charcounter-control').charcounter({
+				placement: 'top-d'
+			});
+		});
+		
+	
+	</script>
+</head>
+<body>
+<br>asdasdad
+<br>
+<br>
+	Campo con MaxLengthda sdas das das dasd a asd asd asda sdas da dssas: <input type='text' class='charcounter-control' name='test2' maxlength='20'  warnlength='10'><br><br>
+	Campo con MaxLength: <input type='text' class='charcounter-control' name='test1' maxlength='20' warnlength='10' ><br><br>
+	Campo con WarningLength: <input type='text' class='charcounter-control' name='test3' warnlength='10' ><br><br>
+	Campo sin MaxLength Y WarningLength: <input type='text' class='charcounter-control' name='test4' ><br><br>
+	<textarea name='textar' class='charcounter-control' maxlength='20' warnlength='10' rows=5 cols=10></textarea>
+</body>
+</html>
