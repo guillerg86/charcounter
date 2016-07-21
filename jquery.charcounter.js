@@ -22,7 +22,8 @@
 				ccDebug: false,
 				changeBorderColor: false,
 				warningBorderColorClass: 'charcounter-warning-border',
-				errorBorderColorClass: 'charcounter-error-border'
+				errorBorderColorClass: 'charcounter-error-border',
+				showLimitOrWarning: 'limit'
 			};
 			var config = $.extend(defaultConfig, inputConfig);
 			if (config.ccDebug) { console.log("Loaded config"); }
@@ -55,8 +56,6 @@
 				if (config.ccDebug) { console.log("Loaded label"); }				
 			}
 			
-
-
 			function ccUpdatePosition($ccField) {
 				// Generating new position
 				var newAbsolutePositionTop = "";
@@ -125,16 +124,18 @@
 				// Setting value
 				var showLabel = false;
 				if ( maxlengthDefined != null && maxlengthDefined !== undefined && maxlengthDefined != -1 ) {
-					$("#charcounter-label").text(valueLength + config.separator + maxlengthDefined);
+					if (config.showLimitOrWarning == 'warning' && warnlengthDefined != null && warnlengthDefined !== undefined && warnlengthDefined!=-1) {
+						$("#charcounter-label").text(valueLength + config.separator + warnlengthDefined);
+					} else {
+						$("#charcounter-label").text(valueLength + config.separator + maxlengthDefined);
+					}
 					showLabel = true;
 				} else if ( warnlengthDefined != null && warnlengthDefined !== undefined && warnlengthDefined != -1) {
 					$("#charcounter-label").text(valueLength + config.separator + warnlengthDefined);
 					showLabel = true;
 				}
-
 				// Update position
 				ccUpdatePosition($ccField);
-				
 				// Setting colors
 				if ( maxlengthDefined != null && maxlengthDefined !== undefined && maxlengthDefined != -1 && valueLength >= maxlengthDefined ) {
 					$("#charcounter-label").removeClass();
